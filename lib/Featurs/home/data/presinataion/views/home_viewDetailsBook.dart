@@ -11,7 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsBookView extends StatelessWidget {
   const DetailsBookView({super.key, required this.bookmodel});
-  @override
   final Bookmodel bookmodel;
   Widget build(BuildContext context) {
     return BlocBuilder<FeatchSimellarCubit, FeatchSimellarState>(

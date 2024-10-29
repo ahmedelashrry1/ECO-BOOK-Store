@@ -12,7 +12,6 @@ class customTextDetails extends StatelessWidget {
       required this.title,
       required this.bookmodel});
 
-  @override
   final Bookmodel bookmodel;
   final String route;
   final int count;

@@ -1,4 +1,3 @@
-import 'package:bookly_store/Featurs/home/data/model/bookmodel/bookmodel.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/manger/cubit/featch_best_sellar_cubit.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/home_viewDetailsBook.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/BodyBestSellerListVIew.dart';
