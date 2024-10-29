@@ -4,5 +4,7 @@ import 'package:dartz/dartz.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, List<Bookmodel>>> fetchBestSellarRepo();
-  Future<Either<Failure, List<Bookmodel>>> fetcheHomeRepo();
+  Future<Either<Failure, List<Bookmodel>>> fetcheHomeRepo(); 
+  Future<Either<Failure, List<Bookmodel>>> featchdetailsbook({required String category}); 
+  
 }

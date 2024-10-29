@@ -1,5 +1,6 @@
 import 'package:bookly_store/Core/utils/api_service.dart';
 import 'package:bookly_store/Featurs/home/data/home_repo/home_repo_impl.dart';
+import 'package:bookly_store/Featurs/home/data/presinataion/manger/cubit/cubit/featch_simellar_cubit.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/manger/cubit/featch_best_sellar_cubit.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/manger/home_cubit_state/featch_book_state_cubit.dart';
 import 'package:bookly_store/Featurs/splash/presintation/views/spalsh_screen.dart';
@@ -31,6 +32,12 @@ class BooklY extends StatelessWidget {
             HomeRepoImpl(ApiService(Dio())),
           )..fetchBestSellar(),
         ),
+        BlocProvider(
+          create: (context) => FeatchSimellarCubit(
+            HomeRepoImpl(ApiService(Dio())),
+          )..fetchSimellar(),
+        ),
+
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

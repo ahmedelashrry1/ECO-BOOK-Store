@@ -23,7 +23,21 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<Bookmodel>>> fetcheHomeRepo()async {
     try {
-      var data = await apiService.get(endPoint: 'volumes?q=subject:news');
+      var data = await apiService.get(endPoint: 'volumes?q=subject:information system');
+      List<Bookmodel> books = [];
+      for (var item in data['items']) {
+        books.add(Bookmodel.fromJson(item));
+      }
+      return right(books);
+    } on Exception catch (e) {
+      return left(ServerFailure(errMessage: e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, List<Bookmodel>>> featchdetailsbook({required String category})async {
+try {
+      var data = await apiService.get(endPoint: 'volumes?&sorting=relevance&q=subject:computer science');
       List<Bookmodel> books = [];
       for (var item in data['items']) {
         books.add(Bookmodel.fromJson(item));
