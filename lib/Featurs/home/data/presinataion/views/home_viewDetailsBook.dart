@@ -1,42 +1,63 @@
+import 'package:bookly_store/Featurs/home/data/model/bookmodel/bookmodel.dart';
+import 'package:bookly_store/Featurs/home/data/presinataion/manger/cubit/cubit/featch_simellar_cubit.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/CustomAppBarDetails.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/SmailrListview.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/bookAction.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/customTextDetails.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/CustomListVeiwBook.dart';
+import 'package:bookly_store/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsBookView extends StatelessWidget {
-  const DetailsBookView({super.key});
+  const DetailsBookView({super.key, required this.bookmodel});
   @override
+  final Bookmodel bookmodel;
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            CustomAppBarDetails(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 106),
-              child: Column(
+    return BlocBuilder<FeatchSimellarCubit, FeatchSimellarState>(
+      builder: (context, state) {
+        if (state is FeatchSimellarSuccess) {
+          return SafeArea(
+            child: Scaffold(
+              body: Column(
                 children: [
-                  SizedBox(height: 5),
-                  CustomListVeiwBook(
-                    image: 'https://en.wikipedia.org/wiki/File:Gutenberg_Bible,_Lenox_Copy,_New_York_Public_Library,_2009._Pic_01.jpg',
+                  const CustomAppBarDetails(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 106),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 5),
+                        CustomListVeiwBook(
+                          bookmodel: bookmodel,
+                        ),
+                        const SizedBox(height: 20),
+                        const customTextDetails(),
+                        const SizedBox(height: 10),
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 20),
-                  customTextDetails(),
-                  SizedBox(height: 10),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: BookAction(),
+                  ),
+                  const SizedBox(height: 10),
+                  const CustomSmailrListview(),
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(20.0),
-              child: BookAction(),
-            ),
-            SizedBox(height: 10),
-            CustomSmailrListview(),
-          ],
-        ),
-      ),
+          );
+        } else if (state is FeatchSimellarError) {
+          return Center(child: Text(state.error));
+        } else if (state is FeatchSimellarLoading) {
+          return const Center(child: CircularProgressIndicator(
+                color: kColor,
+            strokeWidth: 5,
+            backgroundColor: Colors.white,
+          ));
+        } else {
+          return const SizedBox.shrink(); // Default case to return an empty widget
+        }
+      },
     );
   }
-}
+  }

@@ -1,3 +1,5 @@
+import 'package:bookly_store/Featurs/home/data/model/bookmodel/bookmodel.dart';
+import 'package:bookly_store/Featurs/home/data/model/bookmodel/volume_info.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/CustomListVeiwBook.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +34,8 @@ class CustomSmailrListview extends StatelessWidget {
                   padding:
                       EdgeInsets.only(right: 10, left: 5, top: 10, bottom: 10),
                   child: CustomListVeiwBook(
-                    image: "https:images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433161048i/1137215.jpg",
+                    bookmodel: Bookmodel(volumeInfo: VolumeInfo()), // Added volumeInfo parameter
+                    // image: "https:images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433161048i/1137215.jpg",
                   ),
                 );
               },

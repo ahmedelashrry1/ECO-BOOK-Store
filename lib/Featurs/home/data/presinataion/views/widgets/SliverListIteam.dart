@@ -22,11 +22,13 @@ class SliverListIteam extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const DetailsBookView(),
+                        builder: (context) => DetailsBookView(
+                          bookmodel: state.books[index],
+                        ),
                       ),
                     );
                   },
-                  child:  BodyBestSellerListVIew(
+                  child: BodyBestSellerListVIew(
                     title: state.books[index].volumeInfo.title ?? '0',
                     route: state.books[index].volumeInfo.publishedDate ?? '0',
                     count: state.books[index].volumeInfo.pageCount ?? 0,
@@ -55,4 +57,4 @@ class SliverListIteam extends StatelessWidget {
       },
     );
   }
-  }
+}
