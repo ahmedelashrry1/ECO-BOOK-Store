@@ -1,3 +1,4 @@
+import 'package:bookly_store/Featurs/home/data/model/bookmodel/bookmodel.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/manger/cubit/featch_best_sellar_cubit.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/home_viewDetailsBook.dart';
 import 'package:bookly_store/Featurs/home/data/presinataion/views/widgets/BodyBestSellerListVIew.dart';
@@ -26,6 +27,9 @@ class SliverListIteam extends StatelessWidget {
                     );
                   },
                   child:  BodyBestSellerListVIew(
+                    title: state.books[index].volumeInfo.title ?? '0',
+                    route: state.books[index].volumeInfo.publishedDate ?? '0',
+                    count: state.books[index].volumeInfo.pageCount ?? 0,
                     bookmodel: state.books[index],
                   ),
                 );
@@ -51,4 +55,4 @@ class SliverListIteam extends StatelessWidget {
       },
     );
   }
-}
+  }

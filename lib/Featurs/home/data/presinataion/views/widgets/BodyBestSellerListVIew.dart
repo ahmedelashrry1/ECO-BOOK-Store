@@ -7,36 +7,35 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BodyBestSellerListVIew extends StatelessWidget {
   const BodyBestSellerListVIew({
-    super.key, required this.bookmodel,
+    super.key,
+    required this.bookmodel,
+    required this.route,
+    required this.count, required this.title,
   });
   final Bookmodel bookmodel;
+  final String route;
+  final int count;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 0),
       child: Row(
-        // تم استخدام Row لتنظيم العناصر أفقياً
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min, // جعل Row يأخذ المساحة المطلوبة فقط
+        mainAxisSize: MainAxisSize.min,
         children: [
           BestSellarListViewIteam(
-            bookmodel: bookmodel,
-            image: Image.network(
-              'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433161048i/1137215.jpg',
-              
-            )
-          ),
-
-          const SizedBox(width: 10), // مسافة بين العناصر
-
+              bookmodel: bookmodel,
+              image: Image.network(
+                'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433161048i/1137215.jpg',
+              )),
+          const SizedBox(width: 10),
           Flexible(
-            // استخدام Flexible بدلاً من Expanded
-            fit: FlexFit.loose, // السماح للعنصر بأخذ المساحة المتاحة فقط
+            fit: FlexFit.loose,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Harry Potter and the Goblet for free  ',
+                  '$title',
                   style: GoogleFonts.merienda(
                       fontSize: 19, fontWeight: FontWeight.w500),
                   maxLines: 2,
@@ -50,25 +49,26 @@ class BodyBestSellerListVIew extends StatelessWidget {
                       color: kColor,
                     )),
                 const SizedBox(height: 5),
-                Text('19.99 \$',
+                Text('FREE',
                     style: GoogleFonts.blackOpsOne(
                       fontSize: 20,
                     )),
                 const SizedBox(height: 5),
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       FontAwesomeIcons.solidStar,
                       color: Colors.yellow,
                       size: 15,
                     ),
-                    SizedBox(width: 7),
-                    Text('4.8',
-                        style: TextStyle(
+                    const SizedBox(width: 7),
+                    Text(route.toString(),
+                        style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold)),
-                    SizedBox(width: 7),
-                    Text('(245)',
-                        style: TextStyle(fontSize: 14, color: Colors.grey)),
+                    const SizedBox(width: 7),
+                    Text('($count)',
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.grey)),
                   ],
                 ),
               ],
