@@ -10,9 +10,9 @@ class CustomListVeiwBook extends StatelessWidget {
 final Bookmodel bookmodel;
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(16.0),
+      borderRadius: BorderRadius.circular(010.0),
       child: CachedNetworkImage(
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
         imageUrl: bookmodel.volumeInfo.imageLinks?.thumbnail ?? 
         'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1433161048i/1137215.jpg',
         placeholder: (context, url) => const Center(
