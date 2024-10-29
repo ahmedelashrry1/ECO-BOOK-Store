@@ -22,7 +22,9 @@ class customTextDetails extends StatelessWidget {
       children: [
         Text(
           "$title",
-          style: GoogleFonts.lobster(fontSize: 22, fontWeight: FontWeight.w500),
+          style: GoogleFonts.rubikWetPaint(fontSize: 22, fontWeight: FontWeight.w500),
+          textAlign: TextAlign.center,
+          maxLines: 2,
         ),
         Text(
           'Rudyard Kipling',
