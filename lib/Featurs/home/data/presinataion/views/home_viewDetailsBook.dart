@@ -31,7 +31,12 @@ class DetailsBookView extends StatelessWidget {
                           bookmodel: bookmodel,
                         ),
                         const SizedBox(height: 20),
-                        const customTextDetails(),
+                        customTextDetails(
+                        bookmodel: bookmodel,
+                          title: bookmodel.volumeInfo.title ?? 'No Title', // تمرير العنوان الصحيح
+                          count: bookmodel.volumeInfo.pageCount ?? 0, // تمرير عدد الصفحات
+                          route: bookmodel.volumeInfo.publishedDate ?? 'Unknown Date', // تمرير تاريخ النشر
+                        ),
                         const SizedBox(height: 10),
                       ],
                     ),
