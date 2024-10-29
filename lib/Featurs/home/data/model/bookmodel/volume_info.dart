@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import 'image_links.dart';
 import 'industry_identifier.dart';
 
@@ -14,6 +13,7 @@ class VolumeInfo extends Equatable {
   final List<String>? categories;
   final ImageLinks? imageLinks;
   final String? language;
+  final String? previewLink;
 
   const VolumeInfo({
     this.title,
@@ -26,6 +26,7 @@ class VolumeInfo extends Equatable {
     this.categories,
     this.imageLinks,
     this.language,
+    this.previewLink,
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) => VolumeInfo(
@@ -43,6 +44,7 @@ class VolumeInfo extends Equatable {
             ? null
             : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
+        previewLink: json['previewLink'] as String?, // إضافة previewLink هنا
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,6 +59,7 @@ class VolumeInfo extends Equatable {
         'categories': categories,
         'imageLinks': imageLinks?.toJson(),
         'language': language,
+        'previewLink': previewLink,
       };
 
   @override
@@ -72,6 +75,7 @@ class VolumeInfo extends Equatable {
       categories,
       imageLinks,
       language,
+      previewLink,
     ];
   }
 }

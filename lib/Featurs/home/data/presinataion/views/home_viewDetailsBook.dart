@@ -40,9 +40,11 @@ class DetailsBookView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: BookAction(),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: BookAction(
+                      bookmodel: bookmodel,
+                    ),
                   ),
                   const SizedBox(height: 10),
                   const CustomSmailrListview(),
